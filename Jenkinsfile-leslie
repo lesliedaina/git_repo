@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage(cleaning environment) {
+        stage('cleaning environment') {
             steps {
               sh'''
               docker rm -f $(docker ps -aq)
@@ -14,7 +14,7 @@ pipeline {
         }
     
     
-    stage(build the image) {
+    stage('build the image') {
             steps {
                sh '''
                docker build -t leslie:001
@@ -25,7 +25,7 @@ pipeline {
         }
     
     
-    stage(checking images) {
+    stage('checking images') {
             steps {
                 sh '''
                 docker images
@@ -36,7 +36,7 @@ pipeline {
         }
     
     
-    stage(lauch container) {
+    stage('lauch container') {
             steps {
                 sh '''
                 docker run -i --name leslie leslie:001
