@@ -2,22 +2,22 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello1') {
+        stage(cleaning environment) {
             steps {
               sh'''
-              touch kali
-              echo "kali is beautifull"> kali 
-              cat kali
+              docker rm -f $(docker ps -aq)
+              
+              
 
               '''
             }
         }
     
     
-    stage('Hello2') {
+    stage(build the image) {
             steps {
                sh '''
-               date
+               docker build -t leslie:001
                
 
                '''
@@ -25,22 +25,23 @@ pipeline {
         }
     
     
-    stage('Hello3') {
+    stage(checking images) {
             steps {
                 sh '''
-                ls 
-                pwd
+                docker images
+                
 
                 '''
             }
         }
     
     
-    stage('Hello4') {
+    stage(lauch container) {
             steps {
                 sh '''
-                touch daina
-                uname -r
+                docker run -i --name leslie leslie:001
+                docker ps -a
+                
                 
 
                 '''
