@@ -1,0 +1,61 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Hello1') {
+            steps {
+              sh'''
+              touch kali
+              echo "kali is beautifull"> kali 
+              cat kali
+
+              '''
+            }
+        }
+    
+    
+    stage('Hello2') {
+            steps {
+               sh '''
+               date
+               
+
+               '''
+            }
+        }
+    
+    
+    stage('Hello3') {
+            steps {
+                sh '''
+                ls 
+                pwd
+
+                '''
+            }
+        }
+    
+    
+    stage('Hello4') {
+            steps {
+                sh '''
+                touch daina
+                uname -r
+                
+
+                '''
+            }
+        }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    }
+
+
+}
