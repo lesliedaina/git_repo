@@ -1,2 +1,2 @@
-FROM tomcat:8.0-alpine
+FROM ubuntu
 EXPOSE 80
