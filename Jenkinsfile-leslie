@@ -19,7 +19,7 @@ pipeline {
     stage('build the image') {
             steps {
                sh '''
-               docker build -t leslie:001
+               docker build -t leslie:001 .
                
 
                '''
