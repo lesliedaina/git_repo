@@ -1,7 +1,3 @@
-FROM centos
-RUN yum install httpd -y
-COPY index.html /var/www/html/
-
-CMD [“/usr/sbin/httpd”,” -D”,” FOREGROUND”]
-EXPOSE 80
- 
+FROM tomcat:8.0-alpine
+MAINTAINER stephanie
+ADD webapp/target/webapp.war /usr/local/tomcat/webapps
