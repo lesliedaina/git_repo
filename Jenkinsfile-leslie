@@ -41,7 +41,7 @@ pipeline {
     stage('lauch container') {
             steps {
                 sh '''
-                docker run -i --name leslie leslie:001 bin/bash top
+                docker run -i --name leslie leslie:001 
                 docker ps -a
                 
                 
