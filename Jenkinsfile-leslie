@@ -1,5 +1,7 @@
 pipeline {
-    agent ("jenkins-node1")
+    agent {
+            label ("jenkins-node1")
+            }
 
     stages {
         stage('cleaning environment') {
