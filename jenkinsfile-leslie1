@@ -31,4 +31,4 @@ options { 'buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKee
             }
         }
    }
-}
+
