@@ -17,6 +17,8 @@ options { '[buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKe
                 docker rmi -f $(docker images -a-q)
                 '''
             }
+            
+            }
         }
     
     
@@ -88,15 +90,16 @@ options { '[buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKe
     stage('login into docker') {
            steps {
 				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
-			} 
+			 
         
                 
     
-}
-                
-                '''
 
-            }
+                
+                
+             }
+
+            
         }
     
     
@@ -145,23 +148,3 @@ options { '[buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKe
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-}
