@@ -28,7 +28,7 @@ options { buildDiscarder(logRotator(artifactDaysToKeepStr: '',
     stage('build') {
             steps {
                 sh '''
-                docker build daina:01 .
+                docker build -t daina:01 .
                 '''
 
             }
