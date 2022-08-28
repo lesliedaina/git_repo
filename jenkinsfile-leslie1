@@ -9,7 +9,7 @@ pipeline {
 
 
 
-options { 'buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '30', numToKeepStr: '')), disableConcurrentBuilds' }
+options { 'buildDiscarder,logRotator,artifactDaysToKeepStr, artifactNumToKeepStr, daysToKeepStr: '30', numToKeepStr, disableConcurrentBuilds' }
     stages {
         stage('cleaning the environment') {
             steps {
@@ -22,7 +22,7 @@ options { 'buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKee
         }
     
     
-    stage('build the image') {
+    stage('build  image') {
             steps {
                 sh '''
                 docker build daina:01 .
