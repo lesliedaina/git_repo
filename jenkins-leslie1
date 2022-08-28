@@ -1,0 +1,167 @@
+pipeline {
+
+    environment {
+		DOCKERHUB_CREDENTIALS=credentials('dockerhub1')
+	}
+
+
+    agent any
+
+
+
+options { '[buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '30', numToKeepStr: '')), disableConcurrentBuilds()]' }
+    stages {
+        stage('cleaning the environment') {
+            steps {
+                sh '''
+                docker rmi -f $(docker images -a-q)
+                '''
+            }
+        }
+    
+    
+    stage('build the image') {
+            steps {
+                sh '''
+                docker build daina:01 .
+                '''
+
+            }
+        }
+    
+    
+    
+    
+    
+    
+    stage('check the images') {
+            steps {
+                sh '''
+                docker images
+                '''
+            }
+        }
+    
+    
+    stage('cleaning old container') {
+            steps {
+                sh '''
+                docker rm -f $(docker ps -a-q)
+                '''
+            }
+        }
+    
+    
+    
+    
+    stage ('creating the container') {
+            steps {
+                sh '''
+                docker run -t --name leslie1 daina:01
+                '''
+            }
+        }
+    
+    
+    
+    
+    
+    
+    
+    stage('tag my images') {
+            steps {
+                sh '''
+                docker tag daina:01 leslie1/git_repo:02
+                '''
+            }
+        }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    stage('login into docker') {
+           steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			} 
+        
+                
+    
+}
+                
+                '''
+
+            }
+        }
+    
+    
+    
+    
+     stage ('push my image'){
+            steps {
+                sh '''
+                docker push leslie1/git_repo:02
+                
+                '''
+
+            }
+        }
+    
+  
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+}
