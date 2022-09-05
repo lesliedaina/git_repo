@@ -59,7 +59,7 @@ pipeline {
     stage ('creating the container') {
             steps {
                 sh '''
-                docker run -t --name leslie1 daina:01
+                docker run --name leslie1 -d -p:81:8080 daina:01
                 '''
             }
         }
