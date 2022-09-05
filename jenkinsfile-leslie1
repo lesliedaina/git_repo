@@ -45,7 +45,7 @@ pipeline {
         }
 
 
-    #stage('cleaning old container') {
+    stage('cleaning old container') {
             steps {
                 sh '''
                 docker rm -f $(docker ps -a -q)
