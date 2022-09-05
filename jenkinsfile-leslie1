@@ -94,10 +94,7 @@ options { '[buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKe
 
 }
 
-                '''
-
-            }
-        }
+                
 
 
 
@@ -109,7 +106,13 @@ options { '[buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKe
 
                 '''
 
+            
+            
             }
+        
+        
+        
+        
         }
 
 
@@ -136,4 +139,4 @@ options { '[buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKe
 
 
 
-} 
+}
