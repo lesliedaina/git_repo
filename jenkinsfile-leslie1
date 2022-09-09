@@ -1,9 +1,11 @@
+
 pipeline {
 
     environment {
 		DOCKERHUB_CREDENTIALS=credentials('dockerhub1')
 	}
-
+   
+   
 
     agent {
                 label ("jenkins-slave1")
@@ -11,7 +13,7 @@ pipeline {
 
 
 
-
+    stages{
     
 
 
@@ -23,4 +25,81 @@ pipeline {
 
             }
         }
+
+
+
+
+
+
+    stage('check the images') {
+            steps {
+                sh '''
+                docker images
+                '''
+            }
+        }
+
+
+    
+
+
+
+
+    stage ('creating the container') {
+            steps {
+                sh '''
+                docker run --name leslie1 -d -p:80:8080 daina:01
+                '''
+            }
+        }
+
+
+
+
+
+
+
+    stage('tag my images') {
+            steps {
+                sh '''
+                docker tag daina:01 leslie1/git_repo:02
+                '''
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+    stage('login into docker') {
+           steps {
+				sh 'echo $DOCKERHUB_CREDENTIALS_PSW | docker login -u $DOCKERHUB_CREDENTIALS_USR --password-stdin'
+			} 
 }
+
+                
+
+
+
+
+     stage ('push my image'){
+            steps {
+                sh '''
+                docker push leslie1/git_repo:02
+
+                '''
+        }
+
+     }
+
+}
+
+}
+
+
+
