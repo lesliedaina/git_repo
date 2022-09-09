@@ -12,14 +12,7 @@ pipeline {
 
 
 
-    stages {
-        stage('cleaning the environment') {
-            steps {
-                sh '''
-                docker rmi -f $(docker images -a -q)
-                '''
-            }
-        }
+    
 
 
     stage('build the image') {
