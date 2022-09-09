@@ -48,7 +48,7 @@ pipeline {
     stage ('creating the container') {
             steps {
                 sh '''
-                docker run --name leslie2 -d -p:80:8080 daina:01
+                docker run --name leslie3 -d -p:81:8080 daina:01
                 '''
             }
         }
@@ -62,7 +62,7 @@ pipeline {
     stage('tag my images') {
             steps {
                 sh '''
-                docker tag daina:01 leslie1/git_repo:02
+                docker tag daina:01 leslie1/git_repo:03
                 '''
             }
         }
