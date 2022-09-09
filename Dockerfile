@@ -1,4 +1,4 @@
-FROM tomcat:latest
+FROM ubuntu:latest
 RUN mkdir dudu
 RUN  cd dudu
 RUN touch tati
