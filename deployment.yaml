@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name:  MYAPP
+  namespace: default
+  labels:
+    app:  MYAPP
+spec:
+  selector:
+    matchLabels:
+      app: MYAPP
+  replicas: 1
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app:  MYAPP
